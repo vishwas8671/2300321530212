@@ -145,7 +145,7 @@ export function NotificationCard({ notification, isViewed, onView }: Notificatio
 
             <Box display="flex" alignItems="center" gap={0.5} color="text.secondary">
               <CalendarTodayIcon sx={{ fontSize: 13, color: 'text.secondary' }} />
-              <Typography variant="caption" sx={{ fontSize: '11px', fontWeight: 500 }}>
+              <Typography variant="caption" sx={{ fontSize: '11px', fontWeight: 500 }} suppressHydrationWarning>
                 {formatTime(notification.Timestamp)}
               </Typography>
             </Box>

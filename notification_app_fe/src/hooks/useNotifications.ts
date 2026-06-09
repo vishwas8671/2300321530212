@@ -50,8 +50,9 @@ export function useNotifications({ page, limit, typeFilter }: UseNotificationsPr
     await logFrontend('info', 'hook', 'Fetching campus notifications from API.');
 
     try {
-      const response = await api.get<{ notifications: Notification[] }>('/evaluation-service/notifications');
-      const list = response.data.notifications || [];
+      const response = await api.get<any>('/evaluation-service/notifications');
+      const data = response.data;
+      const list = Array.isArray(data) ? data : (data.notifications || []);
       setAllNotifications(list);
       await logFrontend('info', 'hook', `Successfully fetched ${list.length} notifications.`);
     } catch (err: any) {

@@ -205,7 +205,7 @@ export function PriorityInbox({ notifications, loading, onView, viewedIds }: Pri
                       {notif.Message}
                     </Typography>
 
-                    <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }} suppressHydrationWarning>
                       {formatTime(notif.Timestamp)}
                     </Typography>
                   </Grid>

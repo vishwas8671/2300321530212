@@ -33,12 +33,13 @@ async function log(stack, level, packageName, message) {
   const token = process.env.ACCESS_TOKEN || process.env.NEXT_PUBLIC_ACCESS_TOKEN;
   const rawApiUrl = process.env.LOGS_API_URL || process.env.NEXT_PUBLIC_LOGS_API_URL || 'http://4.224.186.213/evaluation-service/logs';
   
-  // Format Log Payload
+  // Format Log Payload (Truncate message if it exceeds 48 characters due to API constraints)
+  const sanitizedMessage = message.length > 48 ? message.slice(0, 45) + '...' : message;
   const payload = {
     stack,
     level,
     package: packageName,
-    message,
+    message: sanitizedMessage,
     timestamp: new Date().toISOString()
   };
 
@@ -66,7 +67,11 @@ async function log(stack, level, packageName, message) {
     });
 
     if (!response.ok) {
-      throw new Error(`AffordMed Logs API responded with status ${response.status}: ${response.statusText}`);
+      let errorBody = '';
+      try {
+        errorBody = await response.text();
+      } catch (_) {}
+      throw new Error(`AffordMed Logs API responded with status ${response.status}: ${response.statusText || ''}. Details: ${errorBody}`);
     }
 
     return true;

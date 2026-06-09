@@ -13,11 +13,12 @@ export async function logFrontend(
   message: string
 ): Promise<boolean> {
   const token = process.env.NEXT_PUBLIC_ACCESS_TOKEN || '';
+  const sanitizedMessage = message.length > 48 ? message.slice(0, 45) + '...' : message;
   const payload = {
     stack: 'frontend',
     level,
     package: packageName,
-    message,
+    message: sanitizedMessage,
     timestamp: new Date().toISOString()
   };
 
