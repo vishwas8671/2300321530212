@@ -173,6 +173,20 @@ Open [http://localhost:3000](http://localhost:3000) to view the portal.
 
 ---
 
+## Screenshots
+
+### Desktop - All Notifications
+![Desktop All Notifications](./screenshots/desktop-all-notifications.png)
+
+### Desktop - Priority Inbox
+![Desktop Priority Inbox](./screenshots/desktop-priority-inbox.png)
+
+### Mobile - All Notifications
+![Mobile All Notifications](./screenshots/mobile-all-notifications.png)
+
+### Mobile - Priority Inbox
+![Mobile Priority Inbox](./screenshots/mobile-priority-inbox.png)
+
 ## 8. Complexity Analysis & Scalability Discussion
 - **Time Complexity:**
   - Parsing & Scoring: $O(1)$
